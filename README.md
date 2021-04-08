@@ -1,8 +1,8 @@
 # 计算机科学与编程入门课程第二次作业
 ## 个人信息
-|    学号    |  姓名  | 仓库地址|
-| :--------: | :----: | :---: |
-| 1900012739 | 范皓年 |[fhn:CS50](https://github.com/Honour-Van/CS50/tree/master/Visualization)|
+|    学号    |  姓名  |
+| :--------: | :----: | 
+| 1900012739 | 范皓年 |
 
 ## 作业1：词频统计图
 ### 描述
@@ -76,6 +76,12 @@
 我们将GDP数据存入json文件中，随后读取出来，并利用pyecharts相关组件进行地图绘制。
 
 部分统计数据将中国澳门分开计算平均，这样的结果是，中国澳门也位列前十；但我们始终认为，港澳台是中国不可分割的一部分，所以统计数据中无澳门，采用至11名。
+
+效果如下：
+
+![GDP和人均GDP前十](./assets/3_1.jpg)
+
+
 ### [作业3链接](https://github.com/Honour-Van/CS50/tree/master/Visualization/3_map.py)
 
 ## 作业4：组合图表
@@ -106,5 +112,9 @@
 2. GDP前十国家的感染率
 3. 世界疫情统计图
 4. 世界GDP减量热图
-### [作业4链接](https://github.com/Honour-Van/CS50/tree/master/Visualization/4_multi.py)
 
+效果如下：
+
+![GDP受疫情的影响](./assets/4_1.jpg)
+
+### [作业4链接](https://github.com/Honour-Van/CS50/tree/master/Visualization/4_multi.py)
