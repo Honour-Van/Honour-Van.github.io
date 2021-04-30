@@ -2986,10 +2986,15 @@
 		</p>
 
 		<h2 id="hw3-2">作业2：搜索引擎的重定向以及Bootstrap美化</h2>
-		<form id="search" action="https://www.sogou.com/web?" method="get" target="_blank">
+		<h3 id="hw3-2desc">描述</h3>
+		<p>我们这里使用bootstrap的下拉复选框，进行搜狗的三个主要搜索引擎的选择</p>
+		<p>基于jquery，我们在换用不同搜索引擎时，使用bootstrap中对应主题色的样式</p>
+		<p>请试一试，在如下的搜索框中键入你想要的搜索词：</p>
+		<form id="search" action="https://www.sogou.com/web?" method="get" target="_blank" name="test">
 			<div class="row">
 				<div class="col">
 					<input class="input-group mb-3" type="text" id="search-box" name="query" placeholder="我什么都知道！" />
+					<input id="hidden-in" type="hidden" name="" value="">
 				</div>
 				<div class="col">
 					<button class="btn btn-outline-warning" id="search-button">搜狗搜索</button>
@@ -3015,37 +3020,69 @@
 				$("#dropdownMenuButton").attr("class", "btn btn-warning dropdown-toggle");
 				$("#search-button").attr("class", "btn btn-outline-warning");
 				$("#search").attr("action", "https://www.sogou.com/web?");
+				$("#hidden-in").attr("name", "");
+				$("#hidden-in").attr("value", "");
 			});
 			$("#bt322").click(function () {
 				$("#dropdownMenuButton").text("搜狗搜微信");
 				$("#dropdownMenuButton").attr("class", "btn btn-success dropdown-toggle");
 				$("#search-button").text("搜狗搜微信");
 				$("#search-button").attr("class", "btn btn-outline-success");
-				$("#search").attr("action", "https://weixin.sogou.com/weixin?type=2");
+				$("#search").attr("action", "https://weixin.sogou.com/weixin?");
+				$("#hidden-in").attr("name", "type");
+				$("#hidden-in").attr("value", "2");
 			});
 			$("#bt323").click(function () {
 				$("#dropdownMenuButton").text("搜狗搜知乎");
 				$("#dropdownMenuButton").attr("class", "btn btn-info dropdown-toggle");
 				$("#search-button").text("搜狗搜知乎");
 				$("#search-button").attr("class", "btn btn-outline-info");
-				$("#search").attr("action", "https://sogou.com/sogou?insite=zhihu.com&")
+				$("#search").attr("action", "https://sogou.com/sogou?");
+				$("#hidden-in").attr("name", "insite");
+				$("#hidden-in").attr("value", "zhihu.com");
 			});
 		</script>
 
+
 		<h3 id="hw3-2impl">实现和探索</h3>
-		<p> 这里我们首先尝试使用按钮方式，但是发现一个表单的结构下，按钮的功能相对确定。随后利用Bootstrap中给出的输入组，但是发现输入组的说明不够详尽，遂放弃。</p>
+		<p> 这里我们首先尝试使用按钮方式，但是发现一个表单的结构下，按钮的功能相对确定，即按键之后就会完成form的提交。随后利用Bootstrap中给出的输入组，但是发现输入组的说明不够详尽，遂放弃。</p>
 
 		<p> 随后我们还是选择了jquery的方式动态改变之。参考如下资料：</p>
 
 		<p><a href="https://blog.csdn.net/edgdvcyz/article/details/53348893">CSDN: jQuery修改form的action值并提交表单的方法</a></p>
 
 		<p><a href="https://stackoverflow.com/questions/5580616/how-to-change-the-text-of-a-button-in-jquery">StackOverflow:
-				How to change the text of a button in jQuery?
-			</a></p>
-		<p>要特别警惕标签配对的问题，在编辑html网页的时候才认识到，不合适的编码习惯很容易导致不匹配并进一步引发网页的混乱。同时要充分了解自己的编辑器及其格式整理特性</p>
-		
+				How to change the text of a button in jQuery?</a>
+		</p>
+		<p>另外，注意到不同搜索引擎对应的搜索格式并不同。虽然同是sogou旗下，提交的搜索词选项都为<code>query</code>但是搜索链接的参数大不相同。</p>
+		<p>对于搜狗网页搜索（默认），只需要在<code>action="https://www.sogou.com/web?"</code>的form之外给一个名为query的input即可。但是对于“搜微信”和“搜知乎”两个引擎分别多出了type和insite两个参数。</p>
+		<p>以改为“搜狗搜微信公众号文章”引擎为例，我们改动搜索引擎的jquery代码如下</p>
+		<p>
+		<pre class="pre-scrollable">
+			$("#bt322").click(function () {
+				
+				$("#dropdownMenuButton").text("搜狗搜微信");
+				$("#dropdownMenuButton").attr("class", "btn btn-success dropdown-toggle");
+
+				$("#search-button").text("搜狗搜微信");
+				$("#search-button").attr("class", "btn btn-outline-success");
+
+				$("#search").attr("action", "https://weixin.sogou.com/weixin?");
+				
+				$("#hidden-in").attr("name", "type");
+				$("#hidden-in").attr("value", "2");
+			});
+		</pre>
+		</p>
+		<p>上述代码分为四段，分别用于更改下拉框样式，搜索按钮样式，表单的目标搜索页，隐藏参数。</p>
+
+		<blockquote>
+			<p>实现过程中的一个小问题：要特别警惕标签配对的问题，在编辑html网页的时候才认识到，不合适的编码习惯很容易导致不匹配并进一步引发网页的混乱。同时要充分了解自己的编辑器及其格式整理特性</p>
+		</blockquote>
+
+
 		<h2>作业3：设计一个网页</h2>
-		<p>我将上述作业设计在了一个网页当中。</p>
+		<p>我将上述作业设计在了这个网页当中。</p>
 
 		<!-- 本次作业到此结束 -->
 		<hr width="500" align='left'><br />
