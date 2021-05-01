@@ -176,7 +176,7 @@
 				$("#hidden-in").attr("value", "zhihu.com");
 			});
 		</script>
-
+		<p>也可以尝试按这个下拉按钮，选择三种不同的搜索引擎，已经用bootstrap4把三个引擎的主题色都区分开了哦，快试试动效！</p>
 
 		<h3 id="hw3-2impl">实现和探索</h3>
 		<p> 这里我们首先尝试使用按钮方式，但是发现一个表单的结构下，按钮的功能相对确定，即按键之后就会完成form的提交。随后利用Bootstrap中给出的输入组，但是发现输入组的说明不够详尽，遂放弃。</p>
@@ -195,8 +195,7 @@
 		<p>以改为“搜狗搜微信公众号文章”引擎为例，我们改动搜索引擎的jquery代码如下</p>
 		<p>
 		<pre class="pre-scrollable">
-			<code class="language-javascript">
-$("#bt322").click(function () {
+<code class="language-javascript">$("#bt322").click(function () {
 
 	$("#dropdownMenuButton").text("搜狗搜微信");
 	$("#dropdownMenuButton").attr("class", "btn btn-success dropdown-toggle");
@@ -208,37 +207,61 @@ $("#bt322").click(function () {
 	
 	$("#hidden-in").attr("name", "type");
 	$("#hidden-in").attr("value", "2");
-});	
-			</code>
-		</pre>
+});	</code></pre>
 		</p>
 		<p>上述代码分为四段，分别用于更改下拉框样式，搜索按钮样式，表单的目标搜索页，隐藏参数。</p>
-
+		<p>其中<code>type="hidden"</code>的那个隐藏输入框，增加了默认参数<code>type="2"</code> ，从而辅助我们正确进入“搜索微信文章”而不是“搜索公众号信息”的界面，这一点非常重要。</p>
+		<p>代码利用<code>prism.js</code>进行了初步的美化。</p>
 		<blockquote>
 			<p>实现过程中的一个小问题：要特别警惕标签配对的问题，在编辑html网页的时候才认识到，不合适的编码习惯很容易导致不匹配并进一步引发网页的混乱。同时要充分了解自己的编辑器及其格式整理特性</p>
 		</blockquote>
 
 
 		<h2>作业3：设计一个网页</h2>
-		<p>我将上述作业设计在了这个网页当中。</p>
-		<p>在具体实现过程当中有一个问题需要格外注意，就是前端组件的渲染顺序一个样式的互相影响。</p>
+		<blockquote>
+			<p>我将上述作业设计在了这个网页当中。也可以通过查看我的网页源码和网页实现，来了解这个网页的实现方式和思考。</p>
+		</blockquote>
+		<h3 id="hw3-3desc">代码实现</h3>
+		<p>在具体实现过程当中有一个问题需要格外注意，前端组件互相影响，所以渲染顺序可能会使效果谬以千里。以下几个例子可以说明这个问题。</p>
 		<p>
-			在实现这个网页的过程当中，第二次作业基于tab的pyecharts插入进去之后，其他pyecharts就不能正常显示了，经过仔细排查，是由于tab的图表是n选1可见的，所以对外默认为不可见，从而使得其他图表不显示。虽然考虑到tab有更加复杂的选择动作，但为了方便添加新的pyecharts进去，我们选择将tab的chart-container做一个小更改：
+			第一个例子，在实现这个网页的过程当中，第二次作业基于tab的pyecharts插入进去之后，其他pyecharts就不能正常显示了，经过仔细排查，是由于tab的图表是n选1可见的，所以其每个tab的chart-container对外默认为不可见。当各个文件分开时，chart-container分开定义，并没有相互干扰，但当合并的时候，由于没有注意到这个点，所以盲目去掉了重定义的其他图表的chart-container，从而使得其他图表沿用了默认不显示的属性。
 		</p>
-		<pre>
-			<code class="language-css line-numbers">
-	.tab-chart-container {
-		display: none;
-		padding: 6px 12px;
-		border-top: none;
-	}
-
-	.chart_container {
+		<p>虽然考虑到tab有更加复杂的选择动作，但为了方便添加新的pyecharts进去，我们选择将tab的chart-container做一个小更改：</p>
+		<pre class="pre-scrollable"><code class="language-css line-numbers">.tab-chart-container {
+			&lt;!-- 注意这个display属性，tab对应的chart-container我们重新定义，从而消除干扰 --&gt;
+			display: none; 
 			padding: 6px 12px;
 			border-top: none;
-	}		
-			</code>
-		</pre>
+		}
+		
+		.chart_container {
+			padding: 6px 12px;
+			border-top: none;
+		}	</code></pre>
+		<p>另一个例子，同样在于这个tab的实现。</p>
+
+<pre class="pre-scrollable">
+<code class="language-javascript">&lt;div class=&quot;box&quot;&gt;
+	&lt;div id=&quot;76f5628b90e24133bf3c488389cb8eec&quot; class=&quot;tab-chart-container&quot; style=&quot;width:900px; height:500px;&quot;&gt;&lt;/div&gt;
+	&lt;script src=&quot;js/hw2-1.js&quot;&gt;&lt;/script&gt;
+	&lt;div id=&quot;e65c24d5e6cb47b7b67928b977c029cf&quot; class=&quot;tab-chart-container&quot; style=&quot;width:900px; height:500px;&quot;&gt;&lt;/div&gt;
+	&lt;div id=&quot;76b6328707f04be5943f9be96507e0b6&quot; class=&quot;tab-chart-container&quot; style=&quot;width:900px; height:500px;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+		<p>最初按照更改习惯，合并，添一处，就把它添在第一个div后面，这样就会发现，js只获取第一个tab的信息，三个tab中仅有第一个可以被切出。其余两个在被选中时仍然为白色。</p>
+		<p>
+			而后我们将脚本放到三个div之后，问题就解决了。
+		</p>
+		<pre>
+<code class="language-javascript">&lt;div class=&quot;box&quot;&gt;
+	&lt;div id=&quot;76f5628b90e24133bf3c488389cb8eec&quot; class=&quot;tab-chart-container&quot; style=&quot;width:900px; height:500px;&quot;&gt;&lt;/div&gt;
+	&lt;div id=&quot;e65c24d5e6cb47b7b67928b977c029cf&quot; class=&quot;tab-chart-container&quot; style=&quot;width:900px; height:500px;&quot;&gt;&lt;/div&gt;
+	&lt;div id=&quot;76b6328707f04be5943f9be96507e0b6&quot; class=&quot;tab-chart-container&quot; style=&quot;width:900px; height:500px;&quot;&gt;&lt;/div&gt;
+	&lt;script src=&quot;js/hw2-1.js&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;</code></pre>
+		<p>
+			这也就是为什么优秀的前端工程规范里，要求把script标签的内容尽量向后放置。这一方面可以防止script加载时间过长导致闪白，同时也可以保证样式和组件充分实现之后再调用js脚本触发逻辑，从而减少类似如上所说的后两个tab-chart-container被遗漏的问题。
+		</p>
 		<!-- 本次作业到此结束 -->
 		<hr width="500" align='left'><br />
 		<h1 id="计算机科学与编程入门第二次作业">往期回顾：第二次作业</h1>
