@@ -32,6 +32,7 @@
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/info_table.css">
 	<link rel="stylesheet" href="css/pyecharts.css">
+	<link rel="stylesheet" href="css/prism.css">
 
 	<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
 	<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
@@ -115,8 +116,7 @@
 		<div id="f2db3a05cbaa448b908a7e8c2120e235" class="chart_container" style="width:900px; height:500px;"></div>
 		<script src="js/hw3-1.js"></script>
 
-		<p class="hwlink" id="hwlink3-1"><a
-				href="https://honour-van.github.io/assets/hw3_1.html">作业1的pyecharts图表html页</a>
+		<p class="hwlink" id="hwlink3-1"><a href="https://honour-van.github.io/assets/hw3_1.html">作业1的pyecharts图表html页</a>
 		</p>
 
 		<h2 id="hw3-2">作业2：搜索引擎的重定向以及Bootstrap美化</h2>
@@ -149,7 +149,7 @@
 		</div>
 		<script>
 			$("#bt321").click(function () {
-				$("#dropdownMenuButton").text("搜狗搜网页");
+				$("#dropdownMenuButton").text("搜狗网页搜索");
 				$("#search-button").text("搜狗网页搜索");
 				$("#dropdownMenuButton").attr("class", "btn btn-warning dropdown-toggle");
 				$("#search-button").attr("class", "btn btn-outline-warning");
@@ -195,19 +195,21 @@
 		<p>以改为“搜狗搜微信公众号文章”引擎为例，我们改动搜索引擎的jquery代码如下</p>
 		<p>
 		<pre class="pre-scrollable">
-			$("#bt322").click(function () {
-				
-				$("#dropdownMenuButton").text("搜狗搜微信");
-				$("#dropdownMenuButton").attr("class", "btn btn-success dropdown-toggle");
+			<code class="language-javascript">
+$("#bt322").click(function () {
 
-				$("#search-button").text("搜狗搜微信");
-				$("#search-button").attr("class", "btn btn-outline-success");
+	$("#dropdownMenuButton").text("搜狗搜微信");
+	$("#dropdownMenuButton").attr("class", "btn btn-success dropdown-toggle");
 
-				$("#search").attr("action", "https://weixin.sogou.com/weixin?");
-				
-				$("#hidden-in").attr("name", "type");
-				$("#hidden-in").attr("value", "2");
-			});
+	$("#search-button").text("搜狗搜微信");
+	$("#search-button").attr("class", "btn btn-outline-success");
+
+	$("#search").attr("action", "https://weixin.sogou.com/weixin?");
+	
+	$("#hidden-in").attr("name", "type");
+	$("#hidden-in").attr("value", "2");
+});	
+			</code>
 		</pre>
 		</p>
 		<p>上述代码分为四段，分别用于更改下拉框样式，搜索按钮样式，表单的目标搜索页，隐藏参数。</p>
@@ -219,7 +221,24 @@
 
 		<h2>作业3：设计一个网页</h2>
 		<p>我将上述作业设计在了这个网页当中。</p>
+		<p>在具体实现过程当中有一个问题需要格外注意，就是前端组件的渲染顺序一个样式的互相影响。</p>
+		<p>
+			在实现这个网页的过程当中，第二次作业基于tab的pyecharts插入进去之后，其他pyecharts就不能正常显示了，经过仔细排查，是由于tab的图表是n选1可见的，所以对外默认为不可见，从而使得其他图表不显示。虽然考虑到tab有更加复杂的选择动作，但为了方便添加新的pyecharts进去，我们选择将tab的chart-container做一个小更改：
+		</p>
+		<pre>
+			<code class="language-css line-numbers">
+	.tab-chart-container {
+		display: none;
+		padding: 6px 12px;
+		border-top: none;
+	}
 
+	.chart_container {
+			padding: 6px 12px;
+			border-top: none;
+	}		
+			</code>
+		</pre>
 		<!-- 本次作业到此结束 -->
 		<hr width="500" align='left'><br />
 		<h1 id="计算机科学与编程入门第二次作业">往期回顾：第二次作业</h1>
@@ -306,8 +325,7 @@
 		生成地理连线图的python代码：<a
 			href="https://github.com/Honour-Van/CS50/tree/master/Visualization/2_geolink.py">2_geolink.py</a>
 		</br>
-		pyecharts地理连线图html文件： <a
-			href="https://honour-van.github.io/assets/hw2_2.html">geo_shaanxi.html</a>
+		pyecharts地理连线图html文件： <a href="https://honour-van.github.io/assets/hw2_2.html">geo_shaanxi.html</a>
 
 		<h2 id="作业3中国地图世界地图">作业3：中国地图、世界地图</h2>
 		<h3 id="描述-2">描述</h3>
@@ -344,8 +362,7 @@
 		<h3 id="作业3链接"></h3>
 		生成地图的python代码：<a href="https://github.com/Honour-Van/CS50/tree/master/Visualization/3_map.py">3_map.py</a>
 		</br>
-		pyecharts地图html文件：<a
-			href="https://honour-van.github.io/assets/hw2_3.html">map_world_gdp.html</a>
+		pyecharts地图html文件：<a href="https://honour-van.github.io/assets/hw2_3.html">map_world_gdp.html</a>
 
 		<h2 id="作业4组合图表">作业4：组合图表</h2>
 		<h3 id="描述-3">描述</h3>
@@ -393,8 +410,7 @@
 		<h3 id="作业4链接"></h3>
 		生成组合图表的python代码：<a href="https://github.com/Honour-Van/CS50/tree/master/Visualization/4_multi.py">4_multi.py</a>
 		</br>
-		pyecharts组合图表的html文件：<a
-			href="https://honour-van.github.io/assets/hw2_4.html">pandemic-gdp.html</a>
+		pyecharts组合图表的html文件：<a href="https://honour-van.github.io/assets/hw2_4.html">pandemic-gdp.html</a>
 
 		<!-- <footer class="site-footer">
 
@@ -402,6 +418,7 @@
           Pages</a>.</span>
     </footer> -->
 	</section>
+	<script src="js/prism.js"></script>
 </body>
 
 </html>
