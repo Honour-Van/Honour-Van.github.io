@@ -27,12 +27,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#157878">
 
-	<link rel="stylesheet" href="/assets/css/style.css?v=cc56ccb60c2d472c2b39a4a19397533de1dc92ab">
+	<link rel="stylesheet" href="../assets/css/style.css?v=cc56ccb60c2d472c2b39a4a19397533de1dc92ab">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/info_table.css">
-	<link rel="stylesheet" href="css/pyecharts.css">
-	<link rel="stylesheet" href="css/prism.css">
+	<link rel="stylesheet" href="../css/info_table.css">
+	<link rel="stylesheet" href="../css/pyecharts.css">
+	<link rel="stylesheet" href="../css/prism.css">
 
 	<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
 	<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
@@ -85,9 +85,9 @@
 		<h2 id="relation-charts">作业1：人物共现分析图：以红楼梦为例</h2>
 		<p>视觉效果如下。注意图表已经嵌入了网页当中，你可以与下面这个pyecharts进行交互：</p>
 		<div id="f2db3a05cbaa448b908a7e8c2120e235" class="chart_container" style="width:900px; height:500px;"></div>
-		<script src="js/hw3-1.js"></script>
+		<script src="../js/hw3-1.js"></script>
 
-		<p class="hwlink" id="hwlink3-1"><a href="https://honour-van.github.io/assets/hw3_1.html" target="_blank">作业1的pyecharts图表html页</a>
+		<p class="hwlink" id="hwlink3-1"><a href="../assets/hw3_1.html" target="_blank">作业1的pyecharts图表html页</a>
 		</p>
 		<p class="hwlink" id="hwlink3-1p1">用于生成共现关系的代码：<a href="https://github.com/Honour-Van/CS50/blob/master/TextAnalyser_co/find_cooccur.py" target="_blank">find_cooccur.py</a></p>
 		<p class="hwlink" id="hwlink3-1p2">用于绘制关系图的代码：<a href="https://github.com/Honour-Van/CS50/blob/master/TextAnalyser_co/draw_relationship.py" target="_blank">draw_relationship.py</a></p>
@@ -100,7 +100,7 @@
 		<p>原理上讲，尽管这是一个迁移的过程，但是由于词性标注都基于jieba，所以得出的结果应当相同，与我们在文本分析任务当中获得的列表进行对比，验证我们的共现分析的程序在筛选逻辑上没有问题。</p>
 		<p>第一版find_coocuur得到的任务节点结果（右）和文本分析器得到的结果对比如下。
 		</p>
-		<p><img src="assets/3_11.jpg" alt="和此前结果进行对比"></p>
+		<p><img src="../assets/3_11.jpg" alt="和此前结果进行对比"></p>
 		<p>简要进行对比，我们可以得到如下的主要修改意见：</p>
 		<ol>
 			<li>贾母、凤姐、黛玉过少，考虑增加在文本分析器中添加的同义词典（同义词）</li>
@@ -279,12 +279,12 @@
 		<p>柱形图的绘制相对简单，要点是要选取合适的绘制范围，基于pyecharts，之后的操作都非常简单</p>
 
 		<p>首先绘制的图片过小，所以我们扩大了词频范围
-			<img src="/assets/1_1.jpg" alt="过小的词云" />
+			<img src="../assets/1_1.jpg" alt="过小的词云" />
 		</p>
 
 		<p>但随后发现范围过大，致使整个图片铺满，出现了显著的长尾海洋+有效数据孤岛。</p>
 
-		<p><img src="/assets/1_2.jpg" alt="长尾导致了数据孤岛" /></p>
+		<p><img src="../assets/1_2.jpg" alt="长尾导致了数据孤岛" /></p>
 
 		<p>最终我们选用了前100个数据进行词云绘图。</p>
 
@@ -305,16 +305,16 @@
 			</div>
 			<div id="76b6328707f04be5943f9be96507e0b6" class="tab-chart-container" style="width:900px; height:500px;">
 			</div>
-			<script src="js/hw2-1.js"></script>
+			<script src="../js/hw2-1.js"></script>
 		</div>
-		<script src="js/hw2-1c.js"></script>
+		<script src="../js/hw2-1c.js"></script>
 
 
 		<h3 id="作业1链接"></h3>
 		生成词频统计图的python代码：<a
 			href="https://github.com/Honour-Van/CS50/tree/master/Visualization/1_wordfreq.py">1_wordfreq.py</a>
 		</br>
-		pyecharts词频统计图html文件： <a href="https://honour-van.github.io/assets/hw2_1.html" target="_blank">wordfreq.html</a>
+		pyecharts词频统计图html文件： <a href="../assets/hw2_1.html" target="_blank">wordfreq.html</a>
 
 		<h2 id="作业2地理连线图">作业2；地理连线图</h2>
 		<h3 id="描述-1">描述</h3>
@@ -346,14 +346,14 @@
 
 		<div class="box">
 			<div id="b41e56fa76514641b401ad58b3917c1d" class="chart_container" style="width:900px; height:500px;"></div>
-			<script src="js/hw2-2.js"></script>
+			<script src="../js/hw2-2.js"></script>
 		</div>
 		</div>
 		<h3 id="作业2链接"></h3>
 		生成地理连线图的python代码：<a
 			href="https://github.com/Honour-Van/CS50/tree/master/Visualization/2_geolink.py">2_geolink.py</a>
 		</br>
-		pyecharts地理连线图html文件： <a href="https://honour-van.github.io/assets/hw2_2.html" target="_blank">geo_shaanxi.html</a>
+		pyecharts地理连线图html文件： <a href="../assets/hw2_2.html" target="_blank">geo_shaanxi.html</a>
 
 		<h2 id="作业3中国地图世界地图">作业3：中国地图、世界地图</h2>
 		<h3 id="描述-2">描述</h3>
@@ -383,14 +383,14 @@
 			<br />
 			<div id="dbf3513604a64579b61b98f0f7a38af8" class="chart_container" style="width:900px; height:500px;">
 			</div>
-			<script src="js/hw2-3.js"></script>
+			<script src="../js/hw2-3.js"></script>
 			<br />
 		</div>
 
 		<h3 id="作业3链接"></h3>
 		生成地图的python代码：<a href="https://github.com/Honour-Van/CS50/tree/master/Visualization/3_map.py">3_map.py</a>
 		</br>
-		pyecharts地图html文件：<a href="https://honour-van.github.io/assets/hw2_3.html" target="_blank">map_world_gdp.html</a>
+		pyecharts地图html文件：<a href="../assets/hw2_3.html" target="_blank">map_world_gdp.html</a>
 
 		<h2 id="作业4组合图表">作业4：组合图表</h2>
 		<h3 id="描述-3">描述</h3>
@@ -431,14 +431,14 @@
 			<br />
 			<div id="31a73e910c654eb3a6cebea23ff4348d" class="chart_container" style="width:900px; height:500px;">
 			</div>
-			<script src="js/hw2-4.js"></script>
+			<script src="../js/hw2-4.js"></script>
 			<br />
 		</div>
 
 		<h3 id="作业4链接"></h3>
 		生成组合图表的python代码：<a href="https://github.com/Honour-Van/CS50/tree/master/Visualization/4_multi.py">4_multi.py</a>
 		</br>
-		pyecharts组合图表的html文件：<a href="https://honour-van.github.io/assets/hw2_4.html" target="_blank">pandemic-gdp.html</a>
+		pyecharts组合图表的html文件：<a href="../assets/hw2_4.html" target="_blank">pandemic-gdp.html</a>
 
 		<!-- <footer class="site-footer">
 
@@ -446,7 +446,7 @@
           Pages</a>.</span>
     </footer> -->
 	</section>
-	<script src="js/prism.js"></script>
+	<script src="../js/prism.js"></script>
 </body>
 
 </html>
